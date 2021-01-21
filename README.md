@@ -56,7 +56,7 @@ The actions you should be able to do with the API are these:
 -   Get game details
 -   Get leaderboard
 -   Log in and Log out
-	- 
+
 The first four actions are self explanatory, a  `player`  would have  `:name`,  `point`, `:wins_count`  and  `:loses_count`  only. For the other actions below is the detailed explanation.
 
 When request get all players, list response render paging by [pagy](https://github.com/ddnexus/pagy). There are 20 records each page.
