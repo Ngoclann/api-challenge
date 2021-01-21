@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_073103) do
     t.integer "losecount"
     t.boolean "isLogin"
     t.boolean "isAdmin"
+    t.text "token"
   end
 
   add_foreign_key "games", "players", column: "player1"

@@ -9,6 +9,7 @@ class CreatePlayers < ActiveRecord::Migration[6.1]
       t.integer :losecount
       t.boolean :isLogin
       t.boolean :isAdmin
+      t.text :token
     end
   end
 
