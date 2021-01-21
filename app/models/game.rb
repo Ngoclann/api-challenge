@@ -1,3 +1,3 @@
-class Game < ApplicationRecord4
+class Game < ApplicationRecord
     has_many :log
 end

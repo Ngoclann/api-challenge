@@ -2,6 +2,7 @@
 
 # Application
 class ApplicationController < ActionController::API
+  require 'json_web_token'
   def not_found
     render json: { error: 'not_found' }
   end
