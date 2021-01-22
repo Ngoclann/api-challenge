@@ -4,7 +4,6 @@ module V1
   # Authentication
   class PlayersController < ApplicationController
     include Pagy::Backend
-    before_action :authorize_request
     before_action :admin_only, except: %i[show]
     before_action :set_player, only: %i[show update]
 

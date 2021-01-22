@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
+gem 'doorkeeper'
 gem 'jwt'
 gem 'pagy', '~> 3.5'
 gem 'parser', '~> 2.2.2.5'

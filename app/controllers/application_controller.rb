@@ -2,25 +2,18 @@
 
 # Application
 class ApplicationController < ActionController::API
-  require 'json_web_token'
-  def not_found
-    render json: { error: 'not_found' }
-  end
+  # equivalent of authenticate_user! on devise, but this one will check the oauth token
+  before_action :doorkeeper_authorize!
 
-  def authorize_request
-    header = request.headers['Authorization']
-    header = header.split(' ').last if header
-    render json: { errors: 'Token is revoked' } unless Blacklist.find_by(token: header).nil?
-    begin
-      @current_user = Player.find(JsonWebToken.decode(header)[:id])
-    rescue ActiveRecord::RecordNotFound => e
-      render json: { errors: 'Record not found' }, status: :ok
-    rescue JWT::DecodeError => e
-      render json: { errors: 'Decode Error' }, status: :ok
-    end
+  private
+
+  # helper method to access the current user from the token
+  def current_user
+    @current_user ||= User.find_by(id: doorkeeper_token[:resource_owner_id])
   end
 
   def admin_only
+    @current_user ||= User.find_by(id: doorkeeper_token[:resource_owner_id])
     render json: { message: 'Only admin can access this action' } and return unless @current_user.isAdmin
   end
 end

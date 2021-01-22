@@ -3,7 +3,6 @@
 module V1
   # Game
   class GamesController < ApplicationController
-    before_action :authorize_request, except: %i[leaderboard]
     before_action :admin_only, only: %i[create reset_point end_game]
     def create
       player1 = params['A']
